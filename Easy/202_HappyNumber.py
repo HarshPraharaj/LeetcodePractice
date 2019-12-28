@@ -11,19 +11,9 @@ class Solution:
         
         while True:
             ans = squareNumber(n)
-            if ans == 1:
+            if ans == 1 or ans == 7:  #7 because of 1111111
                 return True
             elif ans < 10:
                 return False
             else:
                 n = ans
-
-
-        
-        
-        
-
-            
-
-            
-        
