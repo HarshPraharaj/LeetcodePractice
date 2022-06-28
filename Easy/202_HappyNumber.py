@@ -1,19 +1,19 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        def squareNumber(n):
-            sum1 = 0
-            while(n>0):
-                dig = n % 10
-                sum1 = sum1 +(dig*dig)
-                n = n//10
-            return sum1
+        sum_set = set()
+        def calc_sum_digs(num):
+            sum_digs = 0
+            while num > 0:
+                dig = num % 10
+                sum_digs = sum_digs + (dig*dig)
+                num = num // 10
+            return sum_digs
         
-        
-        while True:
-            ans = squareNumber(n)
-            if ans == 1 or ans == 7:  #7 because of 1111111
+        while n not in sum_set:
+            sum_set.add(n)
+            n = calc_sum_digs(n)
+            if n == 1:
                 return True
-            elif ans < 10:
-                return False
-            else:
-                n = ans
+        return False
+        
+## Maintain a set to see if a "Sum" has been obtained before --> If yes, implies that we are stuck in a cycle
